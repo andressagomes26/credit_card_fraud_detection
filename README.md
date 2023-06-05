@@ -26,38 +26,37 @@ As variáveis de entrada **numéricas** são o resultado de uma **transformaçã
 ## Processo de análise
 Nesse projeto foi utilizado os modelos KNN e Decision Tree para realizar a detecção de fraudes de cartão de crédito, a partir da análise da base de dados disponível no Kaggle. Para realizar o projeto foi realizada algumas etapas, sendo elas:
 
-![Apresentação1](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/2927670d-9258-497c-90ef-e16b0aecbc29)
+![Apresentação1](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/ec430bfc-168b-480b-a565-719ea58f12a1)
 
 As fases do projeto foram as seguintes: 
 
-- **Plano de Negócio:** Entender o contexto e os objetivos para a resolução do problema
+- **Plano de Negócio:** Entender o contexto e os objetivos para a resolução do problema.
 - **Análise exploratória dos dados:** O objetivo da etapa é entender o comportamento dos dados, como as classes estão divididas, entender se existem falhas no dataset, por exemplo, dados duplicados e faltantes. Além, de visualizar alguns comportamentos dos dados, como, a correlação entre as variáves e as distribuições referentes ao tempo e valor.
-- **Pré-processamento dos dados:** Não foi necessário realizar uma limpeza profunda nos dados, pois não existiam casos de valores faltantes e duplicados. Todavia, foi necessário, balancear a base de dados, por se tratar de dataset desbalanceado, na qual a maioria das transações representam transações não fraudulentas. Essa etapa foi realizada para que os dados de treinamento dos modelos de Machine Learning estivessem com qualidade.
-- **Treinamento dos modelos:**
-- **Análise dos resultados:**
-
-<!--
-- Também foram feitas transformação de variáveis e normalização dos dados. Tudo isso para que tivéssemos dados de qualidade para aplicar os modelos de machine learning (ML daqui para frente).
-Predição de churn e balanceamento dos dados: Por se tratar de um dataset desbalanceado (contendo muito mais clientes que não realizaram churn do que aqueles que realizaram) foi necessário utilizar alguma técnica de resampling. Eu escolhi o SMOTE. Também fiz a predição utilizando vários modelos de ML, tais quais a regressão logística, a árvore de decisões, a floresta aleatória e o XGBoost. A principal métrica de avaliação dos modelos foi o recall.
-
+- **Pré-processamento dos dados:** Não foi necessário realizar uma limpeza profunda nos dados, pois não existiam casos de valores faltantes e duplicados. Todavia, foi necessário, balancear a base de dados, por se tratar de dataset desbalanceado, na qual a maioria das transações representam transações não fraudulentas. Para isso, utilizou-se as técnicas RandomUnderSampling (RUS) e SMOTE. Essa etapa foi realizada para que os dados de treinamento dos modelos de Machine Learning estivessem com qualidade.
+- **Treinamento dos modelos:** Foi realizado o treinamento dos modelos Decision Tree e KNN, que servirão como máquinas preditivas para esse problema. Dessa forma, usou-se a validação cruzada K-fold para avaliar o desempenho dos modelos e estimar a capacidade de generalização em dados não vistos.
+- **Análise dos resultados:** Por fim, para analisar os resultados obtidos usou-se as métricas Acurácia, Precisão, Recall e F1-Score, como também, a plotagem da matriz de confusão, Curva ROC e a área sob a curva (AUC), medidas importantes em problemas de classificação binária.
 
 ## Resultados
 
-Para a extração de caracteres utilizando Pytesseract destacou-se as regiões de interesse da imagem, converteu a imagem para tons de cinza, suavizou a imagem e por fim realizou-se a binarização de Otsu. 
+A técnica que aprensentou resultados mais satisfatórios para o problema em questão foi o modelo Decision Tree treinado com o cojunto dos dados balanceados com a técnica SMOTE. A Tabela 1 apresenta os resultados para as métricas Acurácia, Precisão, Recall e F1-Score em cada técnica.
 
-<img src="https://github.com/andressagomes26/character-recognition-pdi/blob/main/notebooks/imagens/imagem_resultado_processamento.jpg">
+Exemplo   | Acurácia | Precisão | Recall | F1-Score | AUC
+--------- | -------- | -------- | -------- | -------- | --------
+Decision Tree - RUS | 92.39 | [99.98, 2.0] | [92.4, 89.43] | [96.04, 3.9] | 90.92 |
+**Decision Tree - SMOTE** | **99.78** |	[99.97, 42.56]	| [99.8, 83.74] |	[99.89, 56.44]	 | **91.77** |
+KNN - RUS | 65.03 |	[99.91, 0.32] |	[65.03, 65.85] |	[78.78, 0.65] |	65.44
+KNN - SMOTE | 95.10 |	[99.91, 1.75] |	[95.18, 49.59] |	[97.48, 3.38]	| 72.38
 
-O Pytesseract conseguiu reconhecer bem os nomes dos produtos, entretanto, para os numerais, a técnica não apresentou resultados interessantes. Ademais, para melhorar o resultado, destacou-se apenas o texto desejado. O resultado do Pytesseract para o texto em destaque:
 
-![WhatsApp Image 2023-05-26 at 09 09 13](https://github.com/andressagomes26/character-recognition-pdi/assets/60404990/0fe0e057-d65f-45d9-a0f1-d7ff84bdd80e)
+Ademais, a imagem a seguir apresenta a matriz de confusão para todos os modelos treinados. É possível observar que o modelo Decision Tree (para os dados balanceados com a técnica SMOTE), consegue acertar 70.940 amostras de transações não fraudulentas (Verdadeiro Positivo) e 103 amostras de transações fraudulentas (Verdadeiro Negativo), errando 139 (Falso Positivo) e 20 (Falso Negativo) amostras respectivamente. 
 
-Em seguida, para realizar a extração dos dígitos dos preços dos produtos texto realizou-se o treinamento de um modelo CNN. Foi necessário adaptar as imagens enviadas para rede neural, pois, a rede será foi treinada com a base de dados MNIST. Logo, é interessante que a imagem de teste possua um formato semelhante, ou seja, a área de interesse (numeral) branca e o fundo preto. Assim, a imagem foi transformada para escala de cinza, suavizada, detectou-se as bordas com o filtro de Canny e por fim, aplicou-se as operações morfológicas de dilatação e erosão, resultando na seguinte imagem:
+![matriz](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/455ab9ba-4e5c-4505-abde-820fadcef720)
 
-<img src='https://github.com/andressagomes26/character-recognition-pdi/blob/main/notebooks/imagens/img_cnn_erosao.jpg'>
-
-Por fim, a rede CNN exibiu os seguintes resultados para reconhecimento dos dígitos:
+Por fim, a curva ROC para cada modelo é plotada no gráfico a seguir. Novamente, o modelo Decision Tree apresenta a melhor configuração para os valores da taxa de falsos positivos (FPR) e da taxa de verdadeiros positivos (TPR), apresentados no gráfico. Em conformidade, o modelo apresenta um valor para área sob a curva ROC (AUC) de 97.77%.
  
-![WhatsApp Image 2023-05-26 at 09 11 28](https://github.com/andressagomes26/character-recognition-pdi/assets/60404990/8bbfd518-c56c-4f72-81ee-e520f3f61f2d)
--->
+![curva_roc](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/056da439-c00a-4c8e-8bce-90058a78f502)
+
+Portanto, para o problema de detecção de fraude em cartão de crédito, analisado neste projeto, o classificador de Machine Learning que apresentou resultados mais promissores, de acordo com as técnicas analisadas foi o **Decision Tree**.
+
 ## Autores
 - Andressa Gomes Moreira - andressagomes@alu.ufc.br
