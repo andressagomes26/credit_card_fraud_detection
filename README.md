@@ -36,6 +36,17 @@ As fases do projeto foram as seguintes:
 - **Treinamento dos modelos:** Foi realizado o treinamento dos modelos Decision Tree e KNN, que servirão como máquinas preditivas para esse problema. Dessa forma, usou-se a validação cruzada K-fold para avaliar o desempenho dos modelos e estimar a capacidade de generalização em dados não vistos.
 - **Análise dos resultados:** Por fim, para analisar os resultados obtidos usou-se as métricas Acurácia, Precisão, Recall e F1-Score, como também, a plotagem da matriz de confusão, Curva ROC e a área sob a curva (AUC), medidas importantes em problemas de classificação binária.
 
+## Análise Exploratória dos Dados
+Nessa etapa foi realizada uma análise exploratória para examinar e estudar as características do conjunto de dados. A priori, verificou-se as informações estatísticas dos valores e se o dataset possui valores ausentes ou duplicados. 
+
+Em seguida, foi traçado alguns gráficos para entender o comportamento das variáveis. Em relação a distribuição dos dados em cada classe, é possível concluir que se trata de conjunto de dados distorcido, visto que, existem 284315 amostras para transações não fraudulentas e apenas 492 para as transações fraudulentas
+
+![download](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/e92e01ea-bd52-4450-88be-d13d3c5869d6)
+
+Ademais, foi analisado, por meio da matriz de correlação, o nível em que as variáveis numéricas estão associadas. Dessa forma, é possível observar que os atributos V2 e Amout possuem uma correlação negativa, enquanto, V7 e Amount possuem correlação positiva. 
+
+
+
 ## Resultados
 
 A técnica que aprensentou resultados mais satisfatórios para o problema em questão foi o modelo Decision Tree treinado com o cojunto dos dados balanceados com a técnica SMOTE. A Tabela 1 apresenta os resultados para as métricas Acurácia, Precisão, Recall e F1-Score em cada técnica.
