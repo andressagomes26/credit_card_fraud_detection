@@ -43,8 +43,6 @@ Em seguida, foi traçado alguns gráficos para entender o comportamento das vari
 
 ![download](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/e92e01ea-bd52-4450-88be-d13d3c5869d6)
 
-Ademais, foi analisado, por meio da matriz de correlação, o nível em que as variáveis numéricas estão associadas. Dessa forma, é possível observar que os atributos V2 e Amout possuem uma correlação negativa, enquanto, V7 e Amount possuem correlação positiva. 
-
 Além disso, foi realizada uma análise das associações entre as variáveis numéricas por meio de uma matriz de correlação. Essa análise permite observar o grau de correlação entre as variáveis. É possível notar que os atributos V2 e Amount apresentam uma correlação negativa, indicando uma relação inversa entre eles. Por outro lado, os atributos V7 e Amount possuem uma correlação positiva, o que sugere uma relação direta entre eles. Outro fato importante é que as variáveis não apresentam alta correlação entre si, visto que, a correlação forte entre as variáveis pode trazer desafios no treinamento dos modelos, podendo fornecer informações redundantes e resultar em overfitting, influenciando diretamente no desempenho do modelo.
 
 ![corr](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/aeafb528-919d-4558-9853-6c5ef1d2ac24)
