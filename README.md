@@ -100,8 +100,6 @@ Por fim, a curva ROC para cada modelo é plotada no gráfico a seguir. Novamente
 ![curva_roc](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/056da439-c00a-4c8e-8bce-90058a78f502)
 
 ## Conclusões 
-Portanto, para o problema de detecção de fraude em cartão de crédito, analisado neste projeto, o classificador de Machine Learning que apresentou resultados mais promissores, de acordo com as técnicas analisadas foi o **Decision Tree**, treinado com o cojunto de dados balanceado com a técnica SMOTE.
-
 Portanto, para o problema de detecção de fraude em cartão de crédito analisado neste projeto, o classificador de Machine Learning que apresentou os resultados mais promissores, de acordo com as técnicas analisadas, foi o modelo **Decision Tree**, treinado com o conjunto de dados balanceado utilizando a técnica SMOTE. Os resultados obtidos reforçam a utilidade do modelo **Decision Tree** como uma ferramenta valiosa na detecção de fraudes nesse contexto específico.
 
 ## Autores
