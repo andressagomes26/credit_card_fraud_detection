@@ -1,4 +1,4 @@
-<h1 align="center">Detecção de Fraude de Cartão de Crédito</h1>
+<h1 align="center">Detecção de Fraude de Cartão de Crédito 💳</h1>
 
 ## Problema de Negócio
 
