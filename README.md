@@ -2,15 +2,16 @@
 
 ## Problema de Negócio
 
-**Contexto:** Um ponto de extrema importância para empresas de cartão de crédito é a capacidade de reconhecer transações fraudulentas para que os clintes não sejam cobrados por itens que não compraram. Sabendo disso, neste projeto serão utilizados algoritimos de Machine Learning para detectar transações de créditos fraudulentas.
+**Contexto:** Um ponto de extrema importância para as empresas de cartão de crédito é a capacidade de reconhecer transações fraudulentas, a fim de evitar que os clientes sejam cobrados por itens que não compraram. Sabendo disso, este projeto empregará algoritmos de Machine Learning para detectar transações de crédito fraudulentas.
 
 ## Sobre o conjunto de dados
-O conjunto de dados contém transações feitas por cartões de crédito em setembro de 2013 por titulares de cartões europeus.
-Este conjunto de dados apresenta transações ocorridas em dois dias, onde temos **492 fraudes em 284.807 transações**. O conjunto de dados é altamente desbalanceado, a classe positiva (fraudes) responde por 0,172% de todas as transações.
+O conjunto de dados contém transações feitas por cartões de crédito em setembro de 2013 por titulares de cartões europeus. Este conjunto de dados apresenta transações ocorridas em dois dias, onde existem **492 fraudes em 284.807 transações**. O conjunto de dados é altamente desbalanceado, a classe positiva (fraudes) responde por 0,172% de todas as transações.
 
-As variáveis de entrada **numéricas** são o resultado de uma **transformação PCA**. Devido a questões de confidencialidade, não são fornecidos os recursos originais sobre os dados. As características V1, V2, … V28 são os principais componentes obtidos com PCA, as únicas características que não foram transformadas com PCA são 'Time' e 'Amount'. O recurso 'Time' contém os segundos decorridos entre cada transação e a primeira transação no conjunto de dados. O recurso 'Amount' é o valor da transação. A característica 'Classe' é a variável de resposta e assume **valor 1 em caso de fraude e 0 caso contrário**.
+As variáveis de entrada numéricas neste projeto são resultados de uma transformação **PCA (Principal Component Analysis)**. Por questões de confidencialidade, não são fornecidos os recursos originais dos dados. As características V1, V2, …, V28 representam os principais componentes obtidos por meio do PCA. As únicas características que não foram submetidas à transformação PCA são "Time" e "Amount".
 
-**Dataset:** [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+O recurso "Time" indica o tempo decorrido em segundos entre cada transação e a primeira transação no conjunto de dados. Já o recurso "Amount" representa o valor da transação. Por fim, a característica "Classe" é a variável de resposta, assumindo o **valor 1 em caso de fraude e 0 caso contrário**.
+
+O dataset está disponível publicamente no Kaggle. **Dataset:** [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 
 ## Skills
 - Python;
@@ -24,35 +25,35 @@ As variáveis de entrada **numéricas** são o resultado de uma **transformaçã
 - Machine Learning;
 
 ## Processo de análise
-Nesse projeto foi utilizado os modelos KNN e Decision Tree para realizar a detecção de fraudes de cartão de crédito, a partir da análise da base de dados disponível no Kaggle. Para realizar o projeto foi realizada algumas etapas, sendo elas:
+Neste projeto, foram utilizados os modelos KNN e Decision Tree para detectar fraudes em transações de cartão de crédito, por meio da análise de uma base de dados de fraude de cartão de crédito. O projeto foi conduzido em diversas etapas, que incluem:
 
 ![apresentacao](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/3ec20637-d24a-4e10-81e6-0968e55abbc7)
 
-As fases do projeto foram as seguintes: 
+As etapas do projeto foram as seguintes:
 
-- **Plano de Negócio:** Entender o contexto e os objetivos para a resolução do problema.
-- **Análise exploratória dos dados:** O objetivo da etapa é entender o comportamento dos dados, como as classes estão divididas, entender se existem falhas no dataset, por exemplo, dados duplicados e faltantes. Além, de visualizar alguns comportamentos dos dados, como, a correlação entre as variáves e as distribuições referentes ao tempo e valor.
-- **Pré-processamento dos dados:** Não foi necessário realizar uma limpeza profunda nos dados, pois não existiam casos de valores faltantes e duplicados. Todavia, foi necessário, balancear a base de dados, por se tratar de dataset desbalanceado, na qual a maioria das transações representam transações não fraudulentas. Para isso, utilizou-se as técnicas RandomUnderSampling (RUS) e SMOTE. Essa etapa foi realizada para que os dados de treinamento dos modelos de Machine Learning estivessem com qualidade.
-- **Treinamento dos modelos:** Foi realizado o treinamento dos modelos Decision Tree e KNN, que servirão como máquinas preditivas para esse problema. Dessa forma, usou-se a validação cruzada K-fold para avaliar o desempenho dos modelos e estimar a capacidade de generalização em dados não vistos.
-- **Análise dos resultados:** Por fim, para analisar os resultados obtidos usou-se as métricas Acurácia, Precisão, Recall e F1-Score, como também, a plotagem da matriz de confusão, Curva ROC e a área sob a curva (AUC), medidas importantes em problemas de classificação binária.
+- **Plano de Negócio:** Compreender o contexto e os objetivos para solucionar o problema.
+- **Análise exploratória dos dados:** O objetivo dessa etapa foi entender o comportamento dos dados, verificar a distribuição das classes, identificar possíveis falhas no conjunto de dados, como duplicações ou valores ausentes. Além disso, exploramos visualmente as relações entre as variáveis, incluindo a correlação, e examinamos as distribuições de tempo e valor.
+- **Pré-processamento dos dados:** Não foi necessário realizar uma limpeza profunda dos dados, pois não foram encontrados valores ausentes ou duplicados. No entanto, foi necessário lidar com o desbalanceamento dos dados, pois a maioria das transações eram não fraudulentas. Para isso, aplicamos as técnicas de RandomUnderSampling (RUS) e SMOTE para balancear o conjunto de dados, garantindo a qualidade dos dados de treinamento para os modelos de Machine Learning.
+- **Treinamento dos modelos:** Foi realizado o treinamento dos modelos Decision Tree e KNN, que serviram como máquinas preditivas para resolver o problema em questão. Utilizamos a validação cruzada K-fold para avaliar o desempenho dos modelos e estimar sua capacidade de generalização para dados não vistos.
+- **Análise dos resultados:** Por fim, para analisar os resultados obtidos, foram utilizadas as métricas acurácia, precisão, recall e F1-Score. Além disso, foram plotadas a matriz de confusão, a Curva ROC e calculamos a área sob a curva (AUC), as quais são medidas importantes em problemas de classificação binária.
 
 ## Análise Exploratória dos Dados
-Nessa etapa foi realizada uma análise exploratória para examinar e estudar as características do conjunto de dados. A priori, verificou-se as informações estatísticas dos valores e se o dataset possui valores ausentes ou duplicados. 
+Nesta etapa, realizamos uma análise exploratória para examinar e estudar as características do conjunto de dados. Inicialmente, verificamos as informações estatísticas dos valores e se o conjunto de dados apresenta valores ausentes ou duplicados.
 
-Em seguida, foi traçado alguns gráficos para entender o comportamento das variáveis. Em relação a distribuição dos dados em cada classe, é possível concluir que se trata de conjunto de dados distorcido, visto que, existem 284315 amostras para transações não fraudulentas e apenas 492 para as transações fraudulentas
+Posteriormente, traçamos gráficos para compreender o comportamento das variáveis. Ao analisar a distribuição dos dados em cada classe, constatamos que o conjunto de dados está desbalanceado. Observamos que existem 284.315 amostras para transações não fraudulentas, enquanto apenas 492 amostras correspondem a transações fraudulentas. Essa discrepância indica uma distorção no conjunto de dados.
 
 ![download](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/e92e01ea-bd52-4450-88be-d13d3c5869d6)
 
-Além disso, foi realizada uma análise das associações entre as variáveis numéricas por meio de uma matriz de correlação. Essa análise permite observar o grau de correlação entre as variáveis. É possível notar que os atributos V2 e Amount apresentam uma correlação negativa, indicando uma relação inversa entre eles. Por outro lado, os atributos V7 e Amount possuem uma correlação positiva, o que sugere uma relação direta entre eles. Outro fato importante é que as variáveis não apresentam alta correlação entre si, visto que, a correlação forte entre as variáveis pode trazer desafios no treinamento dos modelos, podendo fornecer informações redundantes e resultar em overfitting, influenciando diretamente no desempenho do modelo.
+Além disso, foi realizada uma análise das associações entre as variáveis numéricas por meio de uma matriz de correlação. Essa análise permite observar o grau de correlação entre as variáveis. É possível notar que os atributos "V2" e "Amount" apresentam uma correlação negativa, indicando uma relação inversa entre eles. Por outro lado, os atributos "V7" e "Amount" possuem uma correlação positiva, sugerindo uma relação direta entre eles. Outro fato importante é que as variáveis não apresentam alta correlação entre si, visto que, a correlação forte entre as variáveis pode trazer desafios no treinamento dos modelos, podendo fornecer informações redundantes e resultar em *overfitting*, influenciando diretamente no desempenho do modelo.
 
 ![corr](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/aeafb528-919d-4558-9853-6c5ef1d2ac24)
 
-Por fim, realizou-se uma análise das distribuições das variáveis "Tempo" e "Valor" em relação aos grupos de transações normais e fraudulentas. Observa-se que as transações fraudulentas têm uma concentração maior de valores entre 0€ e 1.000€, enquanto as transações normais estão distribuídas entre 0€ e 5.000€. Quanto ao atributo "Tempo", não se observa diferença perceptível entre os dois tipos de transações.
+Por fim, realizou-se uma análise das distribuições das variáveis "Time" e "Amount" em relação aos grupos de transações normais e fraudulentas. Observa-se que as transações fraudulentas têm uma concentração maior de valores entre 0€ e 1.000€, enquanto as transações normais estão distribuídas entre 0€ e 5.000€. Quanto ao atributo "Time", não se observa diferença perceptível entre os dois tipos de transações.
 
 ![amout](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/d1495dd2-2d06-436c-bb82-d398f85fbcbb)
 
 ## Pré-processamento dos Dados
-Nesta etapa, foi realizado o balanceamento dos dados para garantir a qualidade dos dados de treinamento do modelo. Utilizaram-se duas técnicas: RandomUnderSampling (RUS) e SMOTE. A técnica RUS reduz a quantidade de exemplos da classe majoritária, selecionando aleatoriamente uma amostra desses exemplos. Isso resulta em um conjunto de dados balanceado, porém com uma quantidade reduzida de dados. Já a técnica SMOTE gera exemplos sintéticos para a classe minoritária. O SMOTE é especialmente útil quando a classe minoritária apresenta regiões com poucos exemplos, permitindo preencher essas regiões com exemplos sintéticos.
+Nesta etapa, foi realizado o balanceamento dos dados para garantir a qualidade dos dados de treinamento do modelo. Utilizaram-se duas técnicas: **RandomUnderSampling (RUS) e SMOTE**. A técnica RUS reduz a quantidade de exemplos da classe majoritária, selecionando aleatoriamente uma amostra desses exemplos. Isso resulta em um conjunto de dados balanceado, porém, com uma quantidade reduzida de dados. Já a técnica SMOTE gera exemplos sintéticos para a classe minoritária. O SMOTE é especialmente útil quando a classe minoritária apresenta regiões com poucos exemplos, permitindo preencher essas regiões com exemplos sintéticos.
 
 Dessa forma, ao utilizar a técnica RUS, houve uma redução na quantidade de dados de treinamento, sendo utilizados 369 exemplos para a classe de transações não fraudulentas e 369 exemplos para as transações fraudulentas.
 
@@ -64,7 +65,7 @@ Em contrapartida, com técnica SMOTE, foram gerados dados sintéticos de treinam
 
 ## Treinamento dos modelos
 
-Durante o treinamento dos modelos Decision Tree e KNN, foi utilizado a técnica GridSearchCV, que auxilia na determinação de valores adequados para os hiperparâmetros e no controle da complexidade do modelo. Desse modo, foram definidos os seguites hiperparâmetros para cada modelo:
+Durante o treinamento dos modelos Decision Tree e KNN, foi utilizado a técnica GridSearchCV, que auxilia na determinação de valores ideais para os hiperparâmetros e no controle da complexidade do modelo. Essaa abordagem nos permitiu ajustar os parâmetros de forma sistemática, explorando diferentes combinações e avaliando o desempenho do modelo em cada configuração. Foram definidos os seguites hiperparâmetros para cada modelo:
 
 Decision Tree  | max_depth | min_samples_split | min_samples_leaf 
 --------- | -------- | -------- | -------- 
@@ -79,8 +80,9 @@ SMOTE | 3 |	distance |
 Além disso, foi utilizada a validação cruzada K-fold (K=5) para avaliar o desempenho dos modelos e estimar a capacidade de generalização em dados não vistos.
 
 ## Análise dos Resultados
+Para analisar os resultados obtidos, foram utilizadas métricas como acurácia, precisão, recall e F1-Score. Além disso, fez-se uso da matriz de confusão, da Curva ROC e do valor da área sob a curva (AUC), medidas importantes em problemas de classificação binária. 
 
-A técnica que aprensentou resultados mais satisfatórios para o problema em questão foi o modelo Decision Tree treinado com o cojunto dos dados balanceados com a técnica SMOTE. A Tabela 1 apresenta os resultados para as métricas Acurácia, Precisão, Recall e F1-Score em cada técnica.
+Após avaliar os resultados, foi constatado que a técnica que o modelo Decision Tree, treinado com o conjunto de dados balanceados utilizando a técnica SMOTE, apresentou os resultados mais satisfatórios para o problema em questão. A Tabela 1 apresenta os resultados para as métricas Acurácia, Precisão, Recall e F1-Score - obtidas com cada técnica utilizada no estudo. Os resultados fornecem informações valiosas sobre o desempenho dos modelos e auxiliam na seleção da abordagem mais eficaz para a detecção de fraudes em transações.
 
 Modelo   | Acurácia | Precisão | Recall | F1-Score | AUC
 --------- | -------- | -------- | -------- | -------- | --------
@@ -97,7 +99,10 @@ Por fim, a curva ROC para cada modelo é plotada no gráfico a seguir. Novamente
  
 ![curva_roc](https://github.com/andressagomes26/credit_card_fraud_detection/assets/60404990/056da439-c00a-4c8e-8bce-90058a78f502)
 
-Portanto, para o problema de detecção de fraude em cartão de crédito, analisado neste projeto, o classificador de Machine Learning que apresentou resultados mais promissores, de acordo com as técnicas analisadas foi o **Decision Tree**.
+## Conclusões 
+Portanto, para o problema de detecção de fraude em cartão de crédito, analisado neste projeto, o classificador de Machine Learning que apresentou resultados mais promissores, de acordo com as técnicas analisadas foi o **Decision Tree**, treinado com o cojunto de dados balanceado com a técnica SMOTE.
+
+Portanto, para o problema de detecção de fraude em cartão de crédito analisado neste projeto, o classificador de Machine Learning que apresentou os resultados mais promissores, de acordo com as técnicas analisadas, foi o modelo **Decision Tree**, treinado com o conjunto de dados balanceado utilizando a técnica SMOTE. Os resultados obtidos reforçam a utilidade do modelo **Decision Tree** como uma ferramenta valiosa na detecção de fraudes nesse contexto específico.
 
 ## Autores
 - Andressa Gomes Moreira - andressagomes@alu.ufc.br
